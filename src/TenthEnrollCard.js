@@ -35,7 +35,7 @@ const TenthEnrollCard = () => {
         <CardMedia
           component="img"
           height="200"
-          image="./asset/b.jpg" 
+          image="./asset/f.png" 
           alt="green iguana"
         />
         <CardContent  >

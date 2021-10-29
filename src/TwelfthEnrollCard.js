@@ -35,7 +35,7 @@ const TwelfthEnrollCard = () => {
         <CardMedia
           component="img"
           height="200"
-          image="./asset/b.jpg" 
+          image="./asset/e.jpg" 
           alt="green iguana"
         />
         <CardContent  >
