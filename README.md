@@ -24,6 +24,7 @@ The smart contract build on the <strong>Ethereum</strong> network can surely be 
  #### 4. Run `npm start` to start the local server.
  #### 5. Access the server at `localhost:3000`
  ### A METAMASK ACCOUNT IS REQUIRED TO INTERACT WITH THE CONTRACT
+ #### THE CONTRACT IS HOSTED ON RINKBEY TEST NETWORK...
  #### [How to install metamask ?](https://blog.wetrust.io/how-to-install-and-use-metamask-7210720ca047)
  <br><hr>
  ## Happy Coding!😀
