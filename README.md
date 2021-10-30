@@ -2,7 +2,9 @@
 <hr>
 
 ## Project Description <br>
-This is a project that stores the report cards  of students of different Schools/Colleges on the Blockchain Network which protects the data integrity and security.
+The Glassy Vault Dapp ideate upon the increasing use of fraudulent certificates due to conventional means of storing and verification of degrees/educational papers/caste certificates etc.<br/>
+This project aims to provide a way to securely store the results of 10th and 12th board exams of different schools using next gen technology i.e blockchain.
+The smart contract build on the <strong>Ethereum</strong> network can surely be a effective way to tackle the above problem and can easily be extended to store more such documents.
 
 # 🛠Tech Stack<br>
 ### Frontend :
