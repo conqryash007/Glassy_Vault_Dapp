@@ -12,7 +12,25 @@ import StudentEnrollForm from "./StudentEnrollForm";
 import TenthEnrollForm from "./StudentEnrollForm";
 import TwelfthEnrollForm from "./StudentEnrollForm";
 
+import getweb3 from "./ethereum/getweb3";
+import compiledCreateSchool from "./ethereum/build/CreateSchool.json";
+
 class App extends Component {
+  state = {
+    web3: null,
+    accounts: [],
+    createSchool: null,
+  };
+  componentDidMount = async () => {
+    const w = await getweb3();
+    this.state.web3 = w;
+    this.state.accounts = await w.eth.getAccounts();
+    this.state.createSchool = new w.eth.Contract(
+      compiledCreateSchool.abi,
+      "0x67b1a6400E0E1735Ad8876cE28fE09150fd3E1d7"
+    );
+    console.log(this.state);
+  };
   render() {
     return (
       <Switch>
