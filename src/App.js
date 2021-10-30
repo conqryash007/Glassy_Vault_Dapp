@@ -5,8 +5,9 @@ import Home from "./Home";
 import SchoolForm from "./SchoolForm";
 import SchoolList from "./SchoolList";
 import StudentList from "./StudentList";
-import Tenth from "./Tenth";
-import Twelfth from "./Twelfth";
+// import Tenth from "./Tenth";
+// import Twelfth from "./Twelfth";
+import ReportCard from "./ReportCard"
 import Dashboard from "./Dashboard";
 import StudentEnrollForm from "./StudentEnrollForm";
 import TenthEnrollForm from "./TenthEnrollForm";
@@ -56,8 +57,12 @@ class App extends Component {
             />
           )}
         />
-        <Route path="/tenth" component={Tenth} />
-        <Route path="/twelfth" component={Twelfth} />
+        <Route path="/tenth" >
+            <ReportCard cl={'tenth'} />
+        </Route>
+        <Route path="/twelfth" >
+            <ReportCard cl={'twelfth'} />
+        </Route>
         <Route
           exact
           path="/studentlist/:address/dashboard"
