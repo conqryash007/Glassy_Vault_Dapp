@@ -90,9 +90,9 @@ const useStyles = makeStyles((theme) => ({
 
 function StudentList(props) {
   const schoolAddress = useParams();
-  let [web3, setweb3] = useState(props.web3);
+  let [web3] = useState(props.web3);
   let [contract] = useState(props.contract);
-  let [arrId, setarrId] = useState([]);
+  // let [arrId, setarrId] = useState([]);
   let [studentData, setstudentData] = useState([]);
   useEffect(() => {
     const call = async () => {
@@ -145,12 +145,18 @@ function StudentList(props) {
                   <TableCell>{row.mothersName}</TableCell>
                   <TableCell>{"GEN"} </TableCell>
                   <TableCell>
-                    <Button color="primary" href={row.tenth}>
+                    <Button
+                      color="primary"
+                      href={`/studentlist/${schoolAddress.address}/${row.id}/tenthReport`}
+                    >
                       📚
                     </Button>
                   </TableCell>
                   <TableCell>
-                    <Button color="primary" href={row.twelfth}>
+                    <Button
+                      color="primary"
+                      href={`/studentlist/${schoolAddress.address}/${row.id}/twelthReport`}
+                    >
                       📚
                     </Button>
                   </TableCell>
