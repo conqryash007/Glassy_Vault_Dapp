@@ -103,11 +103,15 @@ function StudentList(props) {
           schoolAddress["address"]
         );
         const ids = await instance.methods.getAllIds().call();
-        for (let i = 0; i < ids.length; i++) {
-          const stdData = await instance.methods.findStudent(ids[i]).call();
-          setstudentData([...studentData, stdData]);
-          console.log(studentData);
-        }
+        const stdData = await Promise.all(
+          Array(parseInt(ids.length))
+            .fill()
+            .map((ele, i) => {
+              return instance.methods.findStudent(ids[i]).call();
+            })
+        );
+        setstudentData(stdData);
+        console.log(ids, studentData, stdData);
       } catch (err) {
         console.log(err.message);
       }
