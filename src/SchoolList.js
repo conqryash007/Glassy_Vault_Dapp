@@ -106,19 +106,7 @@ const SchoolList = (props) => {
         <Grid container spacing={3} className={classes.grid}>
           <Grid item>
             <div className={classes.root}>
-              <Paper elevation={20} className={classes.paper} md={4}>
-                <Typography
-                  align="center"
-                  className={classes.text}
-                  component="p"
-                  variant="h5"
-                >
-                  LR.DAV SCHOOL
-                </Typography>
-                <Button variant="contained" href="/studentlist">
-                  VIEW STUDENTS
-                </Button>
-              </Paper>
+              
 
               {createSchoolCard()}
             </div>

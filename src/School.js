@@ -41,8 +41,7 @@ const useStyles = makeStyles ((theme)=>({
             School Data WareHouse 
           </Typography>
           <Typography variant="body2" color="text.secondary" className = {classes.container} >
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            
           </Typography>
           <Button color = "secondary" href = '/schoollist' >SEE ALL SCHOOLS</Button>
         </CardContent>

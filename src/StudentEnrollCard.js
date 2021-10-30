@@ -30,7 +30,7 @@ const StudentEnrollCard = (props) => {
           <CardMedia
             component="img"
             height="200"
-            image="./asset/b.jpg"
+            image="/asset/b.jpg"
             alt="green iguana"
           />
           <CardContent>
@@ -47,8 +47,7 @@ const StudentEnrollCard = (props) => {
               color="text.secondary"
               className={classes.container}
             >
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+              
             </Typography>
             <Button
               color="secondary"
