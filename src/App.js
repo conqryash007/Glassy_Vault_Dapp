@@ -7,7 +7,8 @@ import SchoolList from "./SchoolList";
 import StudentList from "./StudentList";
 // import Tenth from "./Tenth";
 // import Twelfth from "./Twelfth";
-import ReportCard from "./ReportCard";
+import ReportCardten from "./ReportCardten";
+import ReportCardtwel from "./ReportCardtwel";
 import Dashboard from "./Dashboard";
 import StudentEnrollForm from "./StudentEnrollForm";
 import TenthEnrollForm from "./TenthEnrollForm";
@@ -70,14 +71,20 @@ class App extends Component {
           exact
           path="/studentlist/:address/:id/tenthReport"
           component={() => (
-            <ReportCard accounts={this.state.accounts} web3={this.state.web3} />
+            <ReportCardten
+              accounts={this.state.accounts}
+              web3={this.state.web3}
+            />
           )}
         />
         <Route
           exact
           path="/studentlist/:address/:id/twelthReport"
           component={() => (
-            <ReportCard accounts={this.state.accounts} web3={this.state.web3} />
+            <ReportCardtwel
+              accounts={this.state.accounts}
+              web3={this.state.web3}
+            />
           )}
         />
         <Route
@@ -96,8 +103,26 @@ class App extends Component {
             />
           )}
         />
-        <Route path="/tenthenrollform" component={TenthEnrollForm} />
-        <Route path="/twelfthenrollform" component={TwelfthEnrollForm} />
+        <Route
+          exact
+          path="/studentlist/:address/tenthResult"
+          component={() => (
+            <TenthEnrollForm
+              web3={this.state.web3}
+              accounts={this.state.accounts}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/studentlist/:address/twelthResult"
+          component={() => (
+            <TwelfthEnrollForm
+              web3={this.state.web3}
+              accounts={this.state.accounts}
+            />
+          )}
+        />
       </Switch>
     );
   }

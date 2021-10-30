@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar.js";
 import { makeStyles } from "@material-ui/core/styles";
 import compiledSchool from "./ethereum/build/School.json";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,29 +64,46 @@ const ReportCard = (props) => {
     }
   }, [web3]);
 
+  const giveTable = (eve) => {
+    try {
+      if (stu.second[eve] >= 0) {
+        return (
+          <tr>
+            <th className={classes.ele_head}>{eve.toUpperCase()}</th>
+            <td className={classes.ele_head}>{stu.second[eve]}</td>
+          </tr>
+        );
+      } else {
+        return null;
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <div>
       <Navbar />
       <h1 className={classes.headings + " " + classes.root}>Report Card</h1>
-      <h2 className={classes.headings}>Class</h2>
+      <h2 className={classes.headings}>Class : 12</h2>
 
       <table className={classes.table_details}>
         <div className={classes.student_data}>
           <tr>
             <th className={classes.ele_head}>Name:</th>
-            <td className={classes.ele_data}>{stu.name}</td>
+            <td className={classes.ele_head}>{stu.name}</td>
           </tr>
           <tr>
             <th className={classes.ele_head}>Roll id:</th>
-            <td className={classes.ele_data}>{stu.id}</td>
+            <td className={classes.ele_head}>{stu.id}</td>
           </tr>
           <tr>
             <th className={classes.ele_head}> Father's Name:</th>
-            <td className={classes.ele_data}>{stu.fathersName}</td>
+            <td className={classes.ele_head}>{stu.fathersName}</td>
           </tr>
           <tr>
             <th className={classes.ele_head}>Mother's Name:</th>
-            <td className={classes.ele_data}>{stu.mothersName}</td>
+            <td className={classes.ele_head}>{stu.mothersName}</td>
           </tr>
         </div>
       </table>
@@ -96,29 +113,22 @@ const ReportCard = (props) => {
           <th className={classes.ele_head}>Subject</th>
           <th className={classes.ele_head}>Marks</th>
         </tr>
-        <tr>
-          <th className={classes.ele_head}>Maths</th>
-          <td className={classes.ele_data}>98</td>
-        </tr>
-        <tr>
-          <th className={classes.ele_head}>Maths</th>
-          <td className={classes.ele_data}>98</td>
-        </tr>
-        <tr>
-          <th className={classes.ele_head}>Maths</th>
-          <td className={classes.ele_data}>98</td>
-        </tr>
-        <tr>
-          <th className={classes.ele_head}>Maths</th>
-          <td className={classes.ele_data}>98</td>
-        </tr>
-        <tr>
-          <th className={classes.ele_head}>Maths</th>
-          <td className={classes.ele_data}>98</td>
-        </tr>
+        {giveTable("biology")}
+        {giveTable("businessStudies")}
+        {giveTable("chemistry")}
+        {giveTable("computerScience")}
+        {giveTable("economics")}
+        {giveTable("english")}
+        {giveTable("geography")}
+        {giveTable("history")}
+        {giveTable("maths")}
+        {giveTable("physicaledu")}
+        {giveTable("physics")}
+        {giveTable("politicalScience")}
       </table>
-
-      <button className={classes.btn}>Go Back</button>
+      <Link to={`/studentlist/${val.address}`}>
+        <button className={classes.btn}>Go Back</button>
+      </Link>
     </div>
   );
 };
