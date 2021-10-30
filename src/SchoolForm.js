@@ -1,82 +1,70 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Title from './Title';
-import Navbar from './Navbar';
-import { Button, Card, CardContent, Grid, TextField } from '@material-ui/core';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Title from "./Title";
+import Navbar from "./Navbar";
+import { Button, Card, CardContent, Grid } from "@material-ui/core";
 
-const useStyles = makeStyles ((theme)=>({
-    root : {
-        display : 'flex ' ,
-        margin: theme.spacing(1),
-    },
-    form : {
-        display : 'flex' ,
-       lineHeight: '0',
-        marginTop : '70px',
-        justifyContent : 'center',
-       
-    },
-    
-    insert : {
-        marginTop : '150px',
-        minWidth : '600px',
-        
-        
-    },
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex ",
+    margin: theme.spacing(1),
+  },
+  form: {
+    display: "flex",
+    lineHeight: "0",
+    marginTop: "70px",
+    justifyContent: "center",
+  },
 
-})) ;
+  insert: {
+    marginTop: "150px",
+    minWidth: "600px",
+  },
+}));
 
-const SchoolForm = () => {
-    const classes = useStyles(); 
-    return (
-        <div className = {classes.root}>
-            <Navbar/>
-            <div  className = {classes.form} >
-            <Title>School Registration Form </Title>
-           
-            </div>
+const SchoolForm = (props) => {
+  let [acc] = useState(props.accounts);
+  let [contract] = useState(props.contract);
+  let [done, setDone] = useState(true);
+  let [addr, setAddr] = useState("");
+  let [message, setMessage] = useState("");
+  const whenSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      setMessage("Please wait untill your transaction is processed");
+      await contract.methods.addSchool().send({ from: acc[0] });
+      const arr = await contract.methods.getAllSchools().call();
+      setMessage("This is your school's unique address");
+      setAddr(arr[arr.length - 1]);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <Navbar />
+      <div className={classes.form}>
+        <Title>School Registration Form </Title>
+      </div>
 
-            <Card className = {classes.insert} >
-                <CardContent>
-                <form>
-                    <Grid container spacing = {1}  >
+      <Card className={classes.insert}>
+        <CardContent>
+          <form onSubmit={whenSubmit}>
+            <Grid xs={1} item>
+              <Button type="submit" variant="contained" color="primary">
+                SUBMIT
+              </Button>
+            </Grid>
+          </form>
+          <div>
+            <h1>{message}</h1>
+            <p>{addr}</p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
 
-                    <Grid xs= {12} sm ={6}  item >
-                        <TextField label = "Name of the School" placeholder = "Enter the name of the School" variant = 'outlined' fullWidth required />
-                    </Grid>
-
-                    <Grid xs= {12} sm ={6}  item >
-                        <TextField label = "Address of the School" placeholder = "Enter the address of the School" variant = 'outlined' fullWidth required />
-                    </Grid>
-
-                    <Grid xs= {12}   item >
-                        <TextField type = 'email' label = "Email Address of the School" placeholder = "Enter the Email Address of the School" variant = 'outlined' fullWidth required />
-                    </Grid>
-
-                    <Grid xs= {12}   item >
-                        <TextField type = 'number' label = "Contact No of the School" placeholder = "Enter the Contact No of the School" variant = 'outlined' fullWidth required />
-                    </Grid>
-
-                    <Grid xs= {12}   item >
-                        <TextField type = 'number' label = "Registration No of the School" placeholder = "Enter the Registration No of the School" variant = 'outlined' fullWidth required />
-                    </Grid>
-
-                    <Grid xs= {12}   item >
-                        <TextField multiline rows = {3} label = "Message for querries" placeholder = "Enter your query here" variant = 'outlined' fullWidth  />
-                    </Grid>
-
-                    <Grid xs= {3}   item >
-                        <Button type = 'submit' variant = 'contained' color ='primary' >SUBMIT</Button>
-                    </Grid>
-
-                    </Grid>
-                   </form> 
-                </CardContent>
-            </Card>
-
-             
-        </div>
-    )
-}
-
-export default SchoolForm
+export default SchoolForm;

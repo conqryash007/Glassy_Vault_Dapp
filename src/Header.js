@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Collapse, IconButton, Toolbar } from "@material-ui/core";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,10 +53,12 @@ function Header() {
     <div className={classes.root}>
       <AppBar className={classes.app}>
         <Toolbar className={classes.appbarWrapper}>
-          <h1 className={classes.title}>
-            {" "}
-            Glassy <span className={classes.colourTitle}>Vault</span>{" "}
-          </h1>
+          <Link to={"/"}>
+            <h1 className={classes.title}>
+              {" "}
+              Glassy <span className={classes.colourTitle}>Vault</span>{" "}
+            </h1>
+          </Link>
         </Toolbar>
       </AppBar>
 

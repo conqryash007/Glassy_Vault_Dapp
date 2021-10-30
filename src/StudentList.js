@@ -91,18 +91,23 @@ const useStyles = makeStyles((theme) => ({
 function StudentList(props) {
   const schoolAddress = useParams();
   let [web3, setweb3] = useState(props.web3);
-  let [contract, setContract] = useState(props.contract);
-
+  let [contract] = useState(props.contract);
+  let [arrId, setarrId] = useState([]);
+  let [studentData, setstudentData] = useState([]);
   useEffect(() => {
     const call = async () => {
       try {
-        console.log(props, schoolAddress["address"]);
+        // console.log(props, schoolAddress["address"]);
         const instance = new web3.eth.Contract(
           compiledSchool.abi,
           schoolAddress["address"]
         );
         const ids = await instance.methods.getAllIds().call();
-        console.log(ids);
+        for (let i = 0; i < ids.length; i++) {
+          const stdData = await instance.methods.findStudent(ids[i]).call();
+          setstudentData([...studentData, stdData]);
+          console.log(studentData);
+        }
       } catch (err) {
         console.log(err.message);
       }
@@ -110,7 +115,7 @@ function StudentList(props) {
     if (typeof web3 != null && typeof contract != null) {
       call();
     }
-  }, [web3, contract, schoolAddress, props]);
+  }, []);
 
   const classes = useStyles();
   return (
@@ -122,33 +127,29 @@ function StudentList(props) {
           <Table size="small" elevation={20}>
             <TableHead>
               <TableRow className={classes.table}>
-                <TableCell elevation={20}>Sl no.</TableCell>
+                <TableCell elevation={20}>Roll ID</TableCell>
                 <TableCell elevation={20}>Name</TableCell>
-                <TableCell elevation={20}>Gender</TableCell>
-                <TableCell elevation={20}>D.O.B</TableCell>
-                <TableCell elevation={20}>State</TableCell>
+                <TableCell elevation={20}>Father's Name</TableCell>
+                <TableCell elevation={20}>Mother's Name</TableCell>
                 <TableCell elevation={20}>Caste</TableCell>
                 <TableCell elevation={20}>Class 10th Marksheet</TableCell>
-                <TableCell elevation={20} align="right">
-                  Class 12th Marksheet
-                </TableCell>
+                <TableCell elevation={20}>Class 12th Marksheet</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {studentData.map((row) => (
                 <TableRow key={row.id}>
-                  <TableCell>{row.Sl}</TableCell>
+                  <TableCell>{row.id}</TableCell>
                   <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.gender}</TableCell>
-                  <TableCell>{row.dob}</TableCell>
-                  <TableCell>{row.state}</TableCell>
-                  <TableCell>{row.caste} </TableCell>
+                  <TableCell>{row.fathersName}</TableCell>
+                  <TableCell>{row.mothersName}</TableCell>
+                  <TableCell>{"GEN"} </TableCell>
                   <TableCell>
                     <Button color="primary" href={row.tenth}>
                       📚
                     </Button>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell>
                     <Button color="primary" href={row.twelfth}>
                       📚
                     </Button>
@@ -165,7 +166,7 @@ function StudentList(props) {
             variant="contained"
             href={`/studentlist/${schoolAddress.address}/dashboard`}
           >
-            ADD MORE STUDENTS
+            ADD/EDIT STUDENTS DATA
           </Button>
         </div>
       </div>

@@ -36,7 +36,16 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={() => <Home />} />
-        <Route path="/schoolform" component={SchoolForm} />
+        <Route
+          path="/schoolform"
+          component={() => (
+            <SchoolForm
+              web3={this.state.web3}
+              contract={this.state.createSchool}
+              accounts={this.state.accounts}
+            />
+          )}
+        />
         <Route
           path="/schoollist"
           component={() => (
