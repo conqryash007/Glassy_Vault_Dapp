@@ -1,8 +1,17 @@
-# Glassy Vault Dapp
+# 🔐Glassy Vault Dapp🔐
+
+
+
+## TEAM :-   `BOOTSTRAP PARADOX`
+
+### 🔗LINK TO EXPLAINATION : <a href="https://www.youtube.com/channel/UCvzN9eAm4LOdAK9Cbmb0pig">Click Here !</a>
+
+### 🔗LINK TO WEBSITE : <a href="https://glassyvault.netlify.app/">Click Here !</a>
+
 <hr>
-### LINK TO WEBSITE : <a href="https://glassyvault.netlify.app/">Click Here !</a>
-<hr>
-## Project Description <br>
+
+## 📜Project Description <br>
+
 The Glassy Vault Dapp ideate upon the increasing use of fraudulent certificates due to conventional means of storing and verification of degrees/educational papers/caste certificates etc.<br/>
 This project aims to provide a way to securely store the results of 10th and 12th board exams of different schools using next gen technology i.e blockchain.
 The smart contract build on the <strong>Ethereum</strong> network can surely be a effective way to tackle the above problem and can easily be extended to store more such documents.
@@ -26,6 +35,6 @@ The smart contract build on the <strong>Ethereum</strong> network can surely be 
  #### 5. Access the server at `localhost:3000`
  ### A METAMASK ACCOUNT IS REQUIRED TO INTERACT WITH THE CONTRACT
  #### THE CONTRACT IS HOSTED ON RINKBEY TEST NETWORK...
- #### [How to install metamask ?](https://blog.wetrust.io/how-to-install-and-use-metamask-7210720ca047)
+ #### 🔗[How to install metamask ?](https://blog.wetrust.io/how-to-install-and-use-metamask-7210720ca047)
  <br><hr>
- ## Happy Coding!😀
+ # 🐱‍💻Happy Hacking!🐱‍💻
