@@ -4,7 +4,7 @@
 
 ## TEAM :-   `BOOTSTRAP PARADOX`
 
-### 🔗LINK TO EXPLAINATION : <a href="https://www.youtube.com/channel/UCvzN9eAm4LOdAK9Cbmb0pig">Click Here !</a>
+### 🔗LINK TO EXPLAINATION : <a href="https://www.youtube.com/watch?v=Y9wkL__ArlE">Click Here !</a>
 
 ### 🔗LINK TO WEBSITE : <a href="https://glassyvault.netlify.app/">Click Here !</a>
 
